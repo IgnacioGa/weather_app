@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get("DEBUG", False)
 
 ALLOWED_HOSTS = ["localhost", "weather-app-gallo.up.railway.app"]
 
@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     # Third part libraries
     "tailwind",
     "django_browser_reload",
-    "whitenoise.runserver_nostatic",
     # Tailwind app
     "theme",
     # Apps
@@ -129,7 +128,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "media"), os.path.join(BASE_DIR, "theme")]
 
 # Media Files
