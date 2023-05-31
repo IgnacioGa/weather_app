@@ -27,8 +27,7 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", False)
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOST = ["*"]
 
 # Application definition
 
@@ -128,17 +127,12 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = "static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"), os.path.join(BASE_DIR, "theme")]
 
 # Media Files
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "theme"),
-    os.path.join(BASE_DIR, "media"),
-]
 
 TAILWIND_APP_NAME = "theme"
 

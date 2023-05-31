@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-    font-family: Arial, Helvetica, sans-serif !important
+    font-family: Arial, Helvetica, sans-serif !important;
 }
 
 @layer base {
@@ -29,7 +29,7 @@ body {
     }
 
     .search-button {
-        @apply text-WHITE absolute right-2.5 bottom-2.5 bg-BLUE_DARK hover:bg-BLUE_DARKER focus:ring-4 focus:outline-none focus:ring-BLUE_MEDIUM font-medium rounded-lg text-sm px-4 py-2 dark:bg-BLUE_DARK dark:hover:bg-BLUE_DARK dark:focus:ring-BLUE_DARKER
+        @apply text-WHITE absolute right-2.5 bottom-2.5 bg-BLUE_DARKER py-2 px-3 rounded-lg hover:bg-BLUE_DARK;
     }
 
     .float-message {
@@ -57,10 +57,14 @@ body {
     }
 
     .city {
-        @apply row justify-between items-center px-5 cursor-pointer border-b-2 border-BLUE_LIGHT p-2
+        @apply row justify-between items-center px-5 cursor-pointer border-b-[1px] border-WHITE p-2
     }
 
     .city-active {
-        @apply bg-BLUE_LIGHT border-BLUE_MEDIUM border-4
+        @apply bg-BLUE_MEDIUM border-b-0;
+    }
+
+    .city-text-active {
+        @apply !text-BLUE_DARKER;
     }
 }

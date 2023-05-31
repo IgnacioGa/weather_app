@@ -4,6 +4,7 @@
  * If you need the full config, get it from here:
  * https://unpkg.com/browse/tailwindcss@latest/stubs/defaultConfig.stub.js
  */
+const colors = require('tailwindcss/colors')
 
 module.exports = {
     content: [
@@ -46,6 +47,7 @@ module.exports = {
     theme: {
         extend: {},
         colors: {
+            ...colors,
             WHITE: '#FFFFFF',
             BLACK: '#000000',
             BLUE_LIGHT: '#DDF5F7',
@@ -81,6 +83,7 @@ module.exports = {
         'htmx-request',
         'city',
         'city-active',
-        'border-BLUE_DARKER'
+        'border-{colors}',
+        'city-text-active',
     ]
 }
