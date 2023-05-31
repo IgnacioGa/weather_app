@@ -1407,6 +1407,10 @@ body {
     display: none;
   }
 
+  .md\:h-4\/5 {
+    height: 80%;
+  }
+
   .md\:w-1\/4 {
     width: 25%;
   }
