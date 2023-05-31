@@ -1,22 +1,6 @@
-# APP de Weather
+# Weather App
 
-## Configuración inicial para entorno local
-
-### Code Style
-
-Este repositorio utiliza [black](https://github.com/ambv/black) para formatear el codigo.
-
-Se debe configurar la herramienta [pre-commiter](https://pre-commit.com/) ejecutando los siguientes comandos:
-
-```
-pip3 install pre-commit
-pre-commit install
-```
-
-Create a .env file containing any settings you want set in the container environment. At a minimum, you will need to set DATABASE_URL. Copying .env.sample will give you good starting point configured for the default database.
-
-
-# APP de Weather
+## Initial configuration for local development
 
 ### Code Style
 
