@@ -1,2 +1,2 @@
 web: gunicorn --chdir config.wsgi -b 0.0.0.0:80 --timeout 350 --log-file -
-release: python /app/manage.py collectstatic --no-input && python /app/manage.py migrate --shared
+release: python /app/manage.py collectstatic --no-input && python /app/manage.py migrate
