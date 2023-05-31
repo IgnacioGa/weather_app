@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+<section class='col centered px-2 lg:px-60 mt-6'>
+        <h1 class="text-4xl font-extrabold leading-none tracking-tight text-BLUE_DARKER md:text-5xl lg:text-6xl text-center">WeatherApp</h1>
+        {% comment %} <---- Search input ----> {% endcomment %}
+        <form id="search-city" 
+            hx-get="{% url 'weather:api_get' %}" 
+            hx-trigger="submit" 
+            hx-target="#list-cities" 
+            hx-swap="beforeend"
+            class="flex w-full mt-6"
+            hx-indicator="#loading">
+            <div class="relative w-full border-BLUE_DARK border-[1px] rounded-md shadow-md">
+                <div class="absolute inset-y-0 w-full left-0 flex items-center pl-3 pointer-events-none">
+                    <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+                <input name="q" id="default-search"
+                class="w-full focus:outline-none px-10 py-4 text-BLUE_DARKER placeholder:text-GRAY_MEDIUM placeholder:font-thin rounded-md font-bold"
+                placeholder="Search for city or country..."
+                required>
+                <button type="submit" class="search-button">Search</button>
+            </div>
+        </form>
+    </section>
+    <section class='col items-center h-4/5 px-2 lg:px-60'>
+        <i class="fixed top-[5px] left-[8px] w-8 z-10 md:hidden" _="on click toggle .hidden on #list-cities then toggle .hidden on <img/> in me">
+            <img src="{% static 'images/svg/menu-hamburger.svg' %}" />
+            <img class="hidden top-[5px] left-[8px] absolute" src="{% static 'images/svg/x-symbol.svg' %}" />
+        </i>
+        <div id="error-section" class="col w-auto">
+
+        </div>
+        {% comment %} <---- Weather Section ----> {% endcomment %}
+        {% comment %} <h1 class="my-4 text-4xl font-extrabold leading-none tracking-tight text-BLUE_DARKER md:text-5xl lg:text-6xl">WeatherApp</h1> {% endcomment %}
+        <div class="row m-2 w-full bg-white h-full border-BLUE_DARK border-[1px] rounded-md shadow-md !bg-[transparent]">
+            <div id="list-cities" class="fixed hidden top-0 left-0 w-4/5 h-full md:relative md:flex md:col md:w-1/3 md:p-3 md:pr-0 md:pl-0 bg-BLUE_DARK">
+                <div class="row justify-center pl-3">
+                    <h4 class="mb-0 p-2 text-xl font-bold text-WHITE">MY CITIES</h4>
+                    {% comment %} <button class="bg-BLUE_LIGHT rounded-tl-lg rounded-tr-lg mb-0 p-2 focus:ring-4 focus:outline-none focus:ring-BLUE_MEDIUM">Favorites</button> {% endcomment %}
+                </div>
+            </div>
+            <div id="city-information" class="col w-full">
+
+            </div>
+        </div>
+    </section>
+{% endblock %}

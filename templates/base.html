@@ -1,0 +1,58 @@
+{% load static tailwind_tags %}
+<html>
+    <head>
+        <title>Weather App</title>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            {% tailwind_css %}
+        </head>
+  <body
+    class="bg-WHITE leading-normal full tracking-normal"
+    style="background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(234,252,255,1) 100%);"
+    hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+    hx-post="{% url 'weather:clear_session' %}" 
+    hx-trigger="load delay:0.5s"
+    >
+    <div id="loading" class="loading">
+      <img id="loading-image" src="{% static 'gifs/loader.gif' %}" alt="Loading..." />
+    </div>
+    <main class="full">
+      {% block main %}{% endblock %}
+      <div class='float-message'>
+          <span></span>
+      </div>
+    </main>
+
+    <script src="https://unpkg.com/htmx.org@1.1.0"></script>
+    <script src="https://unpkg.com/hyperscript.org@0.9.8"></script>
+    {% block extra_js %}{% endblock %}
+    <script>
+
+      document.body.addEventListener('htmx:configRequest', () => {
+        event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+      });
+
+      // Check in every request if the response is an error, and show the message
+      document.body.addEventListener('htmx:responseError', (evt) => {
+        if(evt.detail.xhr.status == 400){
+          let messsage = JSON.parse(evt.detail.xhr.response).message;
+          showErrorMessage(messsage, 'error');
+          evt.preventDefault();
+          evt.stopPropagation();
+        }
+      });
+
+      const showErrorMessage = (message, type) => {
+        // show message, error or success
+          var messageContainer = document.getElementsByClassName("float-message");
+          var messageHtml = messageContainer[0];
+          messageHtml.querySelectorAll('span')[0].innerHTML = message;
+          messageHtml.classList.toggle('show');
+          messageContainer[0].classList.add(`float-message-${type}`);
+          setTimeout(function(){ messageContainer[0].classList.toggle('show'); }, 5000);
+      };
+
+    </script>
+  </body>
+</html>
