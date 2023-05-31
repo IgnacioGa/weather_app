@@ -1051,6 +1051,18 @@ select {
   height: 110vh;
 }
 
+.h-\[75\] {
+  height: 75;
+}
+
+.h-\[75vh\] {
+  height: 75vh;
+}
+
+.h-\[80vh\] {
+  height: 80vh;
+}
+
 .min-h-full {
   min-height: 100%;
 }
@@ -1405,6 +1417,10 @@ body {
 
   .md\:hidden {
     display: none;
+  }
+
+  .md\:h-4\/5 {
+    height: 80%;
   }
 
   .md\:w-1\/4 {
