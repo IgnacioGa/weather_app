@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from dotenv import load_dotenv, find_dotenv
-import mimetypes
 
 
 load_dotenv(find_dotenv())
@@ -19,13 +18,11 @@ load_dotenv(find_dotenv())
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-mimetypes.add_type("text/css", ".css", True)
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ["SECRET_KEY"]
+SECRET_KEY = os.environ.get("SECRET_KEY", "")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", False)
@@ -138,7 +135,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, "media"), os.path.join(BASE_DIR, "theme")]
 
 STATIC_URL = "static/"
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "theme")]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "theme"), os.path.join(BASE_DIR, "media")]
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Media Files
@@ -151,5 +148,5 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-WEATHER_API_ACCESS_KEY = os.environ["WEATHER_API_ACCESS_KEY"]
-WEATHER_API_BASE_URL = os.environ["WEATHER_API_BASE_URL"]
+WEATHER_API_ACCESS_KEY = os.environ.get("WEATHER_API_ACCESS_KEY", None)
+WEATHER_API_BASE_URL = os.environ.get("WEATHER_API_BASE_URL", None)
