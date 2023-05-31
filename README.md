@@ -6,7 +6,7 @@
 
 This project provides a complete configuration for flake8, isort and black. Between these three tools, consistent quality code can be ensured
 
-Se debe configurar la herramienta [pre-commiter](https://pre-commit.com/) ejecutando los siguientes comandos:
+We need to configurate the pre commiter tool [pre-commiter](https://pre-commit.com/) running this commands:
 
 ```
 pip3 install pre-commit
