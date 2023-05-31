@@ -1,5 +1,12 @@
 # Weather App
 
+## Stack
+
+- Django
+- HTMX
+- Tailwind
+- Hyperscript
+
 ## Initial configuration for local development
 
 ### Code Style
@@ -37,7 +44,13 @@ Then install the dependencies:
 Note the `(env)` in front of the prompt. This indicates that this terminal
 session operates in a virtual environment set up by `virtualenv`.
 
-Once `pip` has finished downloading the dependencies:
+Then we have to migrate the database:
+
+```sh
+(env)$ python manage.py migrate
+```
+
+Once `pip` has finished downloading the dependencies and the migrate finish:
 ```sh
 (env)$ cd weather_app
 (env)$ python manage.py runserver
