@@ -29,7 +29,7 @@ DEBUG = os.environ.get("DEBUG", False)
 
 ALLOWED_HOSTS = ["localhost", "weather-app-gallo.up.railway.app"]
 
-CSRF_TRUSTED_ORIGINS = ["weather-app-gallo.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ["https://weather-app-gallo.up.railway.app"]
 
 # Application definition
 
