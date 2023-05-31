@@ -33,7 +33,7 @@ body {
     }
 
     .float-message {
-        @apply opacity-0 fixed right-3 bottom-3 w-[20%] transition-opacity duration-200 p-2 rounded-lg items-start justify-start
+        @apply opacity-0 fixed right-3 bottom-6 md:bottom-3 w-3/5 md:w-1/5 transition-opacity duration-200 p-2 rounded-lg items-start justify-start
     }
 
     .float-message-success {
